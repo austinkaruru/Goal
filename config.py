@@ -5,7 +5,7 @@ class Config:
     '''
     General configuration parent class
     '''
-    pass
+    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://postgres:moringa1234@localhost/goals'
 
 
 class ProdConfig(Config):
