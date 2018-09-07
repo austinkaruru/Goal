@@ -1,16 +1,5 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    {% if title %}
-    <title> {{ title }}</title>
-    {% else %}
-    <title> HEY There</title>
-    {% endif %}
-  </head>
-  <body>
-    {% block content%}
+{% extends 'bootstrap/base.html' %}
 
-    {% endblock %}
-  </body>
-</html>
+{% block navbar %}
+    {% include 'navbar.html' %}
+{% endblock %}
