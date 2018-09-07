@@ -9,9 +9,9 @@ def index():
     '''
     View root page function that returns the index page and its data
     '''
-
+    title = 'Have fun!!'
     message = "Goals pitching"
-    return render_template('index.html', message=message)
+    return render_template('index.html', message=message, title=title)
 
 
 @app.route('/goal/<goal_id>')

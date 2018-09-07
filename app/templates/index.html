@@ -1,1 +1,14 @@
-<h1> {{message}} </h1>
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    {% if title %}
+    <title> {{ title }}</title>
+    {% else %}
+    <title> HEY There</title>
+    {% endif %}
+  </head>
+  <body>
+    {{ message }}
+  </body>
+</html>
