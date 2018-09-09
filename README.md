@@ -27,3 +27,7 @@
 The project is yet to be complete, so it isn't fully functional yet
 
 # License
+
+MIT <a href="https://github.com/austinkaruru/Goal/blob/master/LICENSE">License</a>
+
+Copyright (c) 2018 <a href="https://github.com/austinkaruru">Austin Karuru</a>
