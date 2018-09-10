@@ -14,8 +14,8 @@ def index():
     '''
     View root page function that returns the index page and its data
     '''
-    title = 'Have fun!!'
-    message = "Goals pitching"
+    title = 'Goals Pitching!!'
+    message = "Welcome to Goals pitching. Post your pitches and view others. Don't forget to comment and vote!! Enjoy!!"
     return render_template('index.html', message=message, title=title)
 
 
@@ -49,8 +49,8 @@ def update_profile(uname):
     if form.validate_on_submit():
         user.bio = form.bio.data
 
-        db.session.add(user)
-        db.session.commit()
+        # db.session.add(user)
+        # db.session.commit()
 
         return redirect(url_for('.profile', uname=user.username))
 
@@ -65,6 +65,6 @@ def update_pic(uname):
         filename = photos.save(request.files['photo'])
         path = f'photos/{filename}'
         user.profile_pic_path = path
-        user_photo = PhotoProfile(pic_path=path, user=user)
-        db.session.commit()
+        # user_photo = PhotoProfile(pic_path=path, user=user)
+        # db.session.commit()
     return redirect(url_for('main.profile', uname=uname))

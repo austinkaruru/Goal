@@ -11,20 +11,21 @@
     <title> HEY There</title>
     {% endif %}
 </head>
+<div class="karuru">
 
-<body>
-    {% block styles%}
-    {{ super() }}
-    <link rel="stylesheet" href="{{url_for('static',filename='css/index.css')}}">
-    {% endblock %}
+    <body>
+        {% block styles%}
+        {{ super() }}
+        <link rel="stylesheet" href="{{url_for('static',filename='css/index.css')}}">
+        {% endblock %}
 
-    {% block content %}
+        {% block content %}
 
-    {{ message }}
+        {{ message }}
 
 
-    {% endblock%}
-    </div>
-</body>
+        {% endblock%}
+    </body>
+</div>
 
 </html>
