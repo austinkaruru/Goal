@@ -33,7 +33,7 @@ def create_app(config_name):
 
     # Initializing flask extensions
     bootstrap.init_app(app)
-    db = SQLAlchemy(app)
+    # db = SQLAlchemy(app)
     login_manager.init_app(app)
 
     # Registering the blueprint
