@@ -2,4 +2,3 @@ virtual/
 *.pyc
 .vscode/
 __pycache__/
-virtual/
