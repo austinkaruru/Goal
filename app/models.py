@@ -1,6 +1,5 @@
-from . import db
+from . import db, login_manager
 from flask_login import UserMixin
-from . import login_manager
 from werkzeug.security import generate_password_hash, check_password_hash
 
 
@@ -15,8 +14,9 @@ class User(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(255), index=True)
     email = db.Column(db.String(255), unique=True, index=True)
-    password_hash = db.Column(db.String(255))
     role_id = db.Column(db.Integer, db.ForeignKey('roles.id'))
+    password_hash = db.Column(db.String(255))
+
     bio = db.Column(db.String(255))
     profile_pic_path = db.Column(db.String())
 

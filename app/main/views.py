@@ -2,7 +2,7 @@ from flask import render_template, request, redirect, url_for, abort
 from .forms import UpdateProfile
 from ..models import User
 from .. import db, photos
-from flask_login import login_required
+from flask_login import login_required, current_user
 
 from . import main
 
@@ -10,6 +10,7 @@ from . import main
 
 
 @main.route('/')
+@login_required
 def index():
     '''
     View root page function that returns the index page and its data
@@ -38,7 +39,6 @@ def goal(goal_id):
 
 
 @main.route('/user/<uname>/update', methods=['GET', 'POST'])
-@login_required
 def update_profile(uname):
     user = User.query.filter_by(username=uname).first()
     if user is None:
@@ -49,8 +49,8 @@ def update_profile(uname):
     if form.validate_on_submit():
         user.bio = form.bio.data
 
-        # db.session.add(user)
-        # db.session.commit()
+        db.session.add(user)
+        db.session.commit()
 
         return redirect(url_for('.profile', uname=user.username))
 
@@ -58,7 +58,6 @@ def update_profile(uname):
 
 
 @main.route('/user/<uname>/update/pic', methods=['POST'])
-@login_required
 def update_pic(uname):
     user = User.query.filter_by(username=uname).first()
     if 'photo' in request.files:
