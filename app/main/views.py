@@ -1,6 +1,6 @@
-from flask import render_template, request, redirect, url_for, abort
-from .forms import UpdateProfile
-from ..models import User
+from flask import render_template, request, redirect, url_for, abort, flash
+from .forms import UpdateProfile, GoalForm, CommentForm
+from ..models import User, Category, Pitch, Comment
 from .. import db, photos
 from flask_login import login_required, current_user
 
@@ -30,12 +30,43 @@ def profile(uname):
     return render_template("profile/profile.html", user=user)
 
 
-@main.route('/goal/<goal_id>')
-def goal(goal_id):
+@main.route('/pitch//new', methods=['GET', 'POST'])
+@login_required
+def new_pitch():
     '''
-    View goal page function that returns the goal details page and its data
+       view function that defines the routes decorater for the pitch
+        '''
+
+    form = GoalForm()
+    if form.validate_on_submit():
+        pitch = Pitch(title=form.title.data,
+                      body=form.body.data, user_id=current_user.id)
+        db.session.add(pitch)
+        db.session.commit()
+        flash('Your pitch has been created succesfully')
+        return redirect(url_for('main.new_pitch'))
+
+    pitch = Pitch.query.all()
+
+    return render_template('goal.html', form=form, pitch_list=[pitch])
+
+
+@main.route('/comment/new', methods=['GET', 'POST'])
+@login_required
+def new_comment():
     '''
-    return render_template('goal.html', id=goal_id)
+      view  function that defines the routes decorater for the comments
+        '''
+
+    comment_form = CommentForm()
+    if comment_form.validate_on_submit():
+        comment = Comment(comment=comment_form.comment.data)
+        db.session.add(comment)
+        db.session.commit()
+        flash('Your comment has been posted succesfully')
+        return redirect(url_for('main.new_comment'))
+    comment = Comment.query.all()
+    return render_template('comment.html', comment_form=comment_form, comment_list=comment)
 
 
 @main.route('/user/<uname>/update', methods=['GET', 'POST'])

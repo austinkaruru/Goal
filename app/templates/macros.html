@@ -1,0 +1,36 @@
+{% macro displayPitchList(pitch_list) %}
+{% for goal_pitch in pitch_list %}
+<div class="col-md-1">
+</div>
+<div class="col-md-10">
+    <div class="card m-7">
+        <div class="card-header">
+            <h3 class="card-title">{{goal_pitch.title}}</h3>
+        </div>
+        <div class="card-body">
+            <p class="card-text">{{goal_pitch.body}}</p>
+        </div>
+        <hr>
+        <div class="card-footer">
+            <a href="{{ url_for('main.new_comment') }}" class="btn btn-success btn-sm">Comment</a>
+            <a href="{{ url_for('main.new_comment') }}" class="btn btn-success btn-sm">Vote</a>
+        </div>
+    </div>
+</div>
+<div class="col-md-1">
+</div>
+{% endfor %}
+{% endmacro %}
+{% macro displayCommentList(comment_list)%}
+{% for review in comment_list %}
+<div class="col-md-3">
+</div>
+<div class="col-md-6">
+    <p>{{review.comment}}</p>
+</div>
+<div class="col-md-3">
+</div>
+</div>
+
+{% endfor %}
+{% endmacro %}
