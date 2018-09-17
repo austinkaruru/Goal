@@ -22,9 +22,9 @@
 - HTML5
 - Bootstrap 4
 
-# N.B
+# Future aspectives
 
-The project is yet to be complete, so it isn't fully functional yet
+I plan on giving the app full functionality
 
 # License
 
